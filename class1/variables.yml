@@ -7,8 +7,4 @@
     ntp_server2: 20.20.20.30
   tasks:
     - debug:
-        msg: "{{ansible_host}}"
-        msg: "{{local_as_number}}"
-        msg: "{{remote_as_number}}"
-        msg: "{{ntp_server1}}"
-        msg: "{{ntp_server2}}"
+        msg: "Host: {{ansible_host}}, Local AS: {{local_as_number}}, Remote AS: {{remote_as_number}}, NTP1: {{ntp_server1}}, NTP2: {{ntp_server2}}"
