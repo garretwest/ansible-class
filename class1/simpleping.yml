@@ -1,6 +1,6 @@
 ---
 
 - name: Ping hosts
-  hosts: local
+  hosts: local:cisco
   tasks:
     - ping:
