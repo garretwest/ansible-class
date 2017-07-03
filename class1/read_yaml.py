@@ -1,4 +1,4 @@
-filename = "list.yml"
+filename = "dict.yml"
 import yaml
 from pprint import pprint
 
