@@ -5,3 +5,9 @@
   tasks:
     - debug:
         msg: "{{ansible_host}}"
+
+- name: Print local_as_number var
+  hosts: cisco
+  tasks:
+    - debug:
+        msg: "{{local_as_number}}"
