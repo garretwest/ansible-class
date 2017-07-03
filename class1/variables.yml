@@ -6,8 +6,14 @@
     - debug:
         msg: "{{ansible_host}}"
 
-- name: Print local_as_number var
+- name: Print local_as_number group var
   hosts: cisco
   tasks:
     - debug:
         msg: "{{local_as_number}}"
+
+- name: Print remote_as_number host var
+  hosts: cisco
+  tasks:
+    - debug:
+        msg: "{{remote_as_number}}"
