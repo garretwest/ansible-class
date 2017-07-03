@@ -1,5 +1,4 @@
 ---
-
 - name: Ping Hosts
   hosts: local
   tasks:
