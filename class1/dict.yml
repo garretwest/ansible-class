@@ -1,0 +1,11 @@
+---
+
+interface: GigabitEthernet0/0/0
+ntp_server: pool.ntp.org
+dns1: 8.8.8.8
+dns2: 8.8.4.4
+vlans:
+	- 10: data
+	- 20: voice
+	- 50: video
+	- 100: ap_mgmt
