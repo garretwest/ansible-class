@@ -3,4 +3,4 @@
 - name: Ping hosts
   hosts: local
   tasks:
-    ping:
+    - ping:
