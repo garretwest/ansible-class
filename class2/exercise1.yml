@@ -1,0 +1,4 @@
+---
+
+- name: Gather and print facts
+  hosts: 
