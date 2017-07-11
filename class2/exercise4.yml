@@ -5,7 +5,7 @@
   gather_facts: no
   vars:
     eapi:
-      host: "{{ ansible_host }}"
+      host: pynet-sw7
       username: "{{ username }}"
       password: "{{ password }}"
       transport: eapi
