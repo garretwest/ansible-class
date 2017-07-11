@@ -30,3 +30,10 @@
         msg: "{{ item.key }}"
       with_dict: "{{ansible_net_interfaces}}"
       tags: task2
+
+    - name: Gather UP Interface Names
+      debug:
+        msg: "{{ item.key }}"
+      with_dict: "{{ansible_net_interfaces}}"
+      when: item.value.operstatus == 'up'
+      tags: task3
