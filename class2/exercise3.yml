@@ -32,6 +32,6 @@
 
     - name: Only print 10.220.88.1
       debug:
-        var: {{ item }}
+        var: item
       with_items: "{{ show_arp_new }}"
       when: '"10.220.88.1" in "{{ item }}"'
