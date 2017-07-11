@@ -24,13 +24,13 @@
       debug:
         var: show_arp
 
-#    - name: Show ARP set fact
-#      set_fact:
-#        show_arp_new: "{{ show_arp.stdout_lines[0] }}"
+    - name: Gateway MAC set fact
+      set_fact:
+        mac_table: "{{ show_arp.stdout_lines.ipV4Neighbors }}"
 
-#    - name: Print New Show ARP Output
-#      debug:
-#        var: show_arp_new
+    - name: Print MAC Table
+      debug:
+        var: mac_table
 
 #    - name: Only print 10.220.88.1
 #      debug:
