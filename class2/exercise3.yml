@@ -1,6 +1,6 @@
 ---
 
-- name: Exercise 2 - Gathering specific facts
+- name: Exercise 3 - IOS Command Module
   hosts: cisco
   vars:
     creds:
