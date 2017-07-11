@@ -2,6 +2,7 @@
 
 - name: Exercise 3 - IOS Command Module
   hosts: cisco
+  gather_facts: no
   vars:
     creds:
       host: "{{ ansible_host }}"
@@ -17,7 +18,6 @@
         commands: "show arp"
       register: show_arp
       
-#    - name: Print show arp output
-#      debug:
-#        msg: "{{ show_arp }}"
-        
+    - name: Print show arp output
+      debug:
+        msg: "{{ show_arp }}"
