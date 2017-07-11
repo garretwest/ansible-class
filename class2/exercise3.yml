@@ -21,3 +21,11 @@
     - name: Print show arp output
       debug:
         var: show_arp
+
+    - name: Show ARP set fact
+      set_fact:
+        show_arp_new: show_arp.stdout_lines[0]
+
+    - name: Print New Show ARP Output
+      debug:
+        var: show_arp_new
