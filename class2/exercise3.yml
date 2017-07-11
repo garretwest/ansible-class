@@ -20,4 +20,4 @@
       
     - name: Print show arp output
       debug:
-        msg: "{{ show_arp }}"
+        var: "{{ show_arp }}"
