@@ -1,11 +1,11 @@
 ---
 
 - name: Exercise 4 - EOS Command Module
-  hosts: arista
+  hosts: pynet-sw7
   gather_facts: no
   vars:
     eapi:
-      host: pynet-sw7
+      host: "{{ ansible_host }}"
       username: "{{ username }}"
       password: "{{ password }}"
       transport: eapi
