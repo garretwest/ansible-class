@@ -37,3 +37,9 @@
       with_dict: "{{ansible_net_interfaces}}"
       when: item.value.operstatus == 'up'
       tags: task3
+
+    - name: Gather Hardware Model
+      debug:
+        var: ansible_net_model
+      when: ansible_net_model == '881*'
+      tags: task4
