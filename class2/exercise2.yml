@@ -27,4 +27,4 @@
       
     - name: Gather Interface Names
       debug:
-        var: ansible_net_interfaces
+        var: ansible_net_interfaces.value
