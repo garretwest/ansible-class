@@ -1,1 +1,21 @@
 ---
+
+- name: Exercise 2 - Gathering specific facts
+  hosts: cisco
+  vars:
+    creds:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      transport: ssh
+  
+  tasks:
+    
+    - name: Show ARP Command
+      ios_command:
+        provider: "{{ creds }}"
+        commands: "show arp"
+      register: show_arp
+      debug:
+        msg: "{{ show_arp }}"
+        
