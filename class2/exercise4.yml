@@ -37,3 +37,7 @@
         gateway_mac: "{{ item.hwAddress }}"
       with_items: "{{ mac_table }}"
       when: item.address == '10.220.88.1'
+      
+    - name: Print Gateway MAC
+      debug:
+        var: gateway_mac
