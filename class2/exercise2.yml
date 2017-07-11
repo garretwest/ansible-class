@@ -9,6 +9,7 @@
       password: "{{ password }}"
   
   tasks:
+    
     - name: Gather IOS facts
       ios_facts:
         provider: "{{ creds }}"
@@ -17,8 +18,13 @@
         - task2
         - task3
         - task4
+    
     - name: Gather All IPv4 Addresses
       debug:
         var: ansible_net_all_ipv4_addresses
       when: ansible_net_all_ipv4_addresses[0] == '10.220.88.21'
       tags: task1
+      
+    - name: Gather Interface Names
+      debug:
+        var: ansible_net_interfaces
