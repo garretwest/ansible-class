@@ -17,7 +17,7 @@
         commands: "show arp"
       register: show_arp
       
-    - name: Print show arp output
-      debug:
-        msg: "{{ show_arp }}"
+#    - name: Print show arp output
+#      debug:
+#        msg: "{{ show_arp }}"
         
