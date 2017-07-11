@@ -41,5 +41,5 @@
     - name: Gather Hardware Model
       debug:
         var: ansible_net_model
-      when: ansible_net_model == '881*'
+      when: ansible_net_model == '881 (MPC8300) processor'
       tags: task4
