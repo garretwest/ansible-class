@@ -26,7 +26,7 @@
 
     - name: Gateway MAC set fact
       set_fact:
-        mac_table: "{{ show_arp.stdout_lines.ipV4Neighbors }}"
+        mac_table: "{{ show_arp.stdout_lines[0] }}"
 
     - name: Print MAC Table
       debug:
