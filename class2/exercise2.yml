@@ -27,4 +27,6 @@
       
     - name: Gather Interface Names
       debug:
-        var: ansible_net_interfaces.value
+        msg: "{{ item }}"
+      with_dict: "{{ansible_net_interfaces.key}}"
+      tags: task2
