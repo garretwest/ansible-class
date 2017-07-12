@@ -14,7 +14,7 @@
   
   tasks:
     
-   - name: Show ARP EOS Command
+    - name: Show ARP EOS Command
       eos_command:
         provider: "{{ eapi }}"
         commands: "show arp"
