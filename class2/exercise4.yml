@@ -47,4 +47,4 @@
         token: xoxb/194208048800/nghFGpr8YHJiqToGHpwrC5Fi
         msg: 'Testing Slack integration with Ansible'
         channel: #scriptops
-        username: 'pythonbot'
+        username: pythonbot
