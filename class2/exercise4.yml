@@ -41,10 +41,3 @@
     - name: Print Gateway MAC
       debug:
         var: gateway_mac
-
-    - name: Send notification message via Slack
-      slack:
-        token: T0WKD0R5Z/B67UGMM51/ny4kwHOWUfX6ma1t2OjN8Jx7
-        msg: 'Testing Slack integration with Ansible'
-        channel: scriptops
-        username: pythonbot
