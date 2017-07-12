@@ -14,7 +14,7 @@
   
   tasks:
     
-    - name: Show ARP EOS Command
+   - name: Show ARP EOS Command
       eos_command:
         provider: "{{ eapi }}"
         commands: "show arp"
@@ -41,3 +41,10 @@
     - name: Print Gateway MAC
       debug:
         var: gateway_mac
+
+    - name: Send notification message via Slack all options
+      slack:
+        token: xoxb-194208048800-nghFGpr8YHJiqToGHpwrC5Fi
+        msg: 'Testing Slack integration with Ansible'
+        channel: #scriptops
+        username: 'pythonbot'
