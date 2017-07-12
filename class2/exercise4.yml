@@ -47,5 +47,5 @@
         token: xoxb/194208048800/nghFGpr8YHJiqToGHpwrC5Fi
         domain: nvidianeteng.slack.com
         msg: 'Testing Slack integration with Ansible'
-        channel: #scriptops
+        channel: scriptops
         username: pythonbot
