@@ -44,7 +44,7 @@
 
     - name: Send notification message via Slack all options
       slack:
-        token: xoxb-194208048800-nghFGpr8YHJiqToGHpwrC5Fi
+        token: xoxb/194208048800/nghFGpr8YHJiqToGHpwrC5Fi
         msg: 'Testing Slack integration with Ansible'
         channel: #scriptops
         username: 'pythonbot'
