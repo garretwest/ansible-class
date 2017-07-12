@@ -42,10 +42,9 @@
       debug:
         var: gateway_mac
 
-    - name: Send notification message via Slack all options
+    - name: Send notification message via Slack
       slack:
-        token: xoxb/194208048800/nghFGpr8YHJiqToGHpwrC5Fi
-        domain: nvidianeteng.slack.com
+        token: T0WKD0R5Z/B67UGMM51/ny4kwHOWUfX6ma1t2OjN8Jx7
         msg: 'Testing Slack integration with Ansible'
         channel: scriptops
         username: pythonbot
