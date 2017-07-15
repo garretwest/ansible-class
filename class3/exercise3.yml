@@ -16,21 +16,21 @@
         version: "{{ item.version }}"
         state: "{{ item.state|default('present') }}"
       with_items: "{{ interfaces }}"
-#      notify: write mem
+      notify: write mem
     
-#    - name: Ping validation
-#      nxos_ping:
-#        provider: "{{ provider_ssh }}"
-#        dest: "{{ item.addr }}"
-#      with_items: "{{ interfaces }}"
-#      when:
-#        - item.version == 'v4'
-#        - item.addr =! my_ip
+    - name: Ping validation
+      nxos_ping:
+        provider: "{{ provider_ssh }}"
+        dest: "{{ item.addr }}"
+      with_items: "{{ interfaces }}"
+      when:
+        - item.version == 'v4'
+        - item.addr not in ansible_net_all_ipv4_addresses
       
-#  handlers:
-#    - name: write mem
-#      nxos_command:
-#        provider: "{{ provider_ssh }}"
-#        commands: copy run start
-#        timeout: 60
-#      changed_when: True
+  handlers:
+    - name: write mem
+      nxos_command:
+        provider: "{{ provider_ssh }}"
+        commands: copy run start
+        timeout: 60
+      changed_when: True
