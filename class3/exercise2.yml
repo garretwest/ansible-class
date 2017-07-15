@@ -16,7 +16,7 @@
   handlers:
     - name: write mem
       nxos_command:
-        provider: "{{ provider_ssh }}"
+        provider: "{{ provider_nxapi }}"
         commands: copy run start
         timeout: 60
       changed_when: True
