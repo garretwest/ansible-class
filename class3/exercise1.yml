@@ -1,2 +1,5 @@
 ---
-
+- name: Configure VLANs
+  hosts: nxos
+  - tasks:
+  
