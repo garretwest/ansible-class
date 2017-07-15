@@ -9,7 +9,7 @@
         addr: "{{ item.addr }}"
         mask: "{{ item.mask }}"
         version: "{{ item.version }}"
-        state: "{{ item.state|default(present) }}"
+        state: "{{ item.state|default('present') }}"
       with_items: "{{ interfaces }}"
       notify: write mem
     
