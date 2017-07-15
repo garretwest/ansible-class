@@ -18,4 +18,5 @@
       nxos_command:
         provider: "{{ provider_ssh }}"
         commands: copy run start
+        timeout: 60
       changed_when: True
