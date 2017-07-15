@@ -2,6 +2,11 @@
 - name: Class 3 Exercise 3
   hosts: nxos
   tasks:
+    - name: Gather facts
+      nxos_facts:
+        provider: "{{ provider_nxapi }}"
+      tags: facts
+     
     - name: Configure IP Addresses
       nxos_ip_interface:
         provider: "{{ provider_ssh }}"
@@ -11,19 +16,21 @@
         version: "{{ item.version }}"
         state: "{{ item.state|default('present') }}"
       with_items: "{{ interfaces }}"
-      notify: write mem
+#      notify: write mem
     
-    - name: Ping validation
-      nxos_ping:
-        provider: "{{ provider_ssh }}"
-        dest: "{{ item.addr }}"
-      with_items: "{{ interfaces }}"
-      when:
+#    - name: Ping validation
+#      nxos_ping:
+#        provider: "{{ provider_ssh }}"
+#        dest: "{{ item.addr }}"
+#      with_items: "{{ interfaces }}"
+#      when:
+#        item.version == 'v4'
+#        item.addr =! my_ip
       
-  handlers:
-    - name: write mem
-      nxos_command:
-        provider: "{{ provider_ssh }}"
-        commands: copy run start
-        timeout: 60
-      changed_when: True
+#  handlers:
+#    - name: write mem
+#      nxos_command:
+#        provider: "{{ provider_ssh }}"
+#        commands: copy run start
+#        timeout: 60
+#      changed_when: True
