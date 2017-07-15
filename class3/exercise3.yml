@@ -25,7 +25,7 @@
       with_items: "{{ interfaces }}"
       when:
         - item.version == 'v4'
-        - item.addr not in ansible_net_all_ipv4_addresses
+#        - item.addr not in ansible_net_all_ipv4_addresses
       
   handlers:
     - name: write mem
