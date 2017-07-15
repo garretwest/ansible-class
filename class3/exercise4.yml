@@ -1,0 +1,43 @@
+---
+
+- name: Exercise 4 - EOS Command Module
+  hosts: pynet-sw7
+  gather_facts: no
+  vars:
+    eapi:
+      host: "{{ ansible_host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      transport: eapi
+      use_ssl: True
+      validate_certs: no
+  
+  tasks:
+    
+    - name: Show ARP EOS Command
+      eos_command:
+        provider: "{{ eapi }}"
+        commands: "show arp"
+      register: show_arp
+      
+    - name: Print show arp output
+      debug:
+        var: show_arp
+
+    - name: MAC Table set fact
+      set_fact:
+        mac_table: "{{ show_arp.stdout_lines[0].ipV4Neighbors }}"
+
+    - name: Print MAC Table
+      debug:
+        var: mac_table
+
+    - name: Gather gateway MAC
+      set_fact:
+        gateway_mac: "{{ item.hwAddress }}"
+      with_items: "{{ mac_table }}"
+      when: item.address == '10.220.88.1'
+      
+    - name: Print Gateway MAC
+      debug:
+        var: gateway_mac

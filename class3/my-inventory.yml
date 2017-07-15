@@ -1,0 +1,22 @@
+---
+[all:vars]
+ansible_connection=local
+ansible_python_interpreter=/home/gwest/VENV/ansible/bin/python
+username=pyclass
+password=88newclass
+
+[local]
+localhost ansible_connection=local
+
+[cisco]
+pynet-rtr1 ansible_host=184.105.247.70
+pynet-rtr2 ansible_host=184.105.247.71
+
+[arista]
+pynet-sw5 ansible_host=arista5.twb-tech.com
+pynet-sw6 ansible_host=arista6.twb-tech.com
+pynet-sw7 ansible_host=arista7.twb-tech.com
+pynet-sw8 ansible_host=arista8.twb-tech.com
+
+[arista:vars]
+eapi_post=443
