@@ -2,11 +2,6 @@
 - name: Class 3 Exercise 3
   hosts: nxos
   tasks:
-    - name: Gather facts
-      nxos_facts:
-        provider: "{{ provider_nxapi }}"
-      tags: facts
-     
     - name: Configure IP Addresses
       nxos_ip_interface:
         provider: "{{ provider_ssh }}"
