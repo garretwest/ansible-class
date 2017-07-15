@@ -1,0 +1,20 @@
+---
+- name: Class 3 Exercise 2
+  hosts: nxos
+  tasks:
+    - name: Configure IP Addresses
+      nxos_ip_interface:
+        provider: "{{ provider_ssh }}"
+        interface: "{{ item.interface }}"
+        addr: "{{ item.addr }}"
+        mask: "{{ item.mask }}"
+        state: "{{ item.state|default() }}"
+      with_items: "{{ interfaces }}"
+      notify: write mem
+    
+    handlers:
+      - name: write mem
+        nxos_command:
+          provider: "{{ provider_ssh }}"
+          commands: copy running-config startup-config
+        changed_when: True
