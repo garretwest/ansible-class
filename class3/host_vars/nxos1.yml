@@ -9,6 +9,6 @@ interfaces:
     mask: 24
     version: v4
   - interface: Ethernet 2/4
-    addr: 2001::db8:2346:200c:1
+    addr: 2001::db8:2345:200c:1
     mask: 64
     version: v6
