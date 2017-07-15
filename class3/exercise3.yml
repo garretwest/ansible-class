@@ -17,7 +17,7 @@
       nxos_ping:
         provider: "{{ provider_ssh }}"
         dest: "{{ item.remote_addr }}"
-      with: "{{ interfaces }}"
+      with_items: "{{ interfaces }}"
       when: item.version == 'v4'
       
   handlers:
