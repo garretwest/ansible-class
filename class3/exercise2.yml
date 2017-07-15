@@ -17,5 +17,5 @@
     - name: write mem
       nxos_command:
         provider: "{{ provider_ssh }}"
-        commands: copy running-config startup-config
+        commands: copy run start
       changed_when: True
