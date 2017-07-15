@@ -7,10 +7,10 @@ vlans_unique:
 
 interfaces:
   - interface: Ethernet 2/3
-    addr: 10.36.29.2
+    addr: 10.36.28.2
     mask: 24
     version: v4
   - interface: Ethernet 2/4
-    addr: 2001::db8:2346:200c:2
+    addr: 2001::db8:2345:200c:2
     mask: 64
     version: v6
