@@ -21,13 +21,9 @@
     - name: Ping validation
       nxos_ping:
         provider: "{{ provider_ssh }}"
-        dest: "{{ ansible_net_all_ipv4_addresses }}"
-      with_nested:
-        - "{{ ansible_net_all_ipv4_addresses }}"
-        - "{{ interfaces }}"
-      when:
-        - item[1].version == 'v4'
-        - item[1].addr not in item[0]
+        dest: "{{ item.remote_addr }}"
+      with: "{{ interfaces }}"
+      when: item.version == 'v4'
       
   handlers:
     - name: write mem
