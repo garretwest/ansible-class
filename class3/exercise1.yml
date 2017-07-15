@@ -1,5 +1,7 @@
 ---
-- name: Configure VLANs
+- name: Class 3 Exercise 1
   hosts: nxos
-  - tasks:
+  tasks:
+    - name: Configure VLANs
+    
   
