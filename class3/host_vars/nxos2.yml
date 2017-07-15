@@ -4,3 +4,13 @@ vlans_unique:
     name: orange
   - vlan_id: 306
     name: gray
+
+interfaces:
+  - interface: Ethernet 2/3
+    addr: 10.36.28.2
+    mask: 24
+    version: v4
+  - interface: Ethernet 2/4
+    addr: 2001::db8:2345:200c:2
+    mask: 64
+    version: v6
