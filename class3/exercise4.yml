@@ -1,0 +1,23 @@
+---
+- name: Class 3 Exercise 4
+  hosts: nxos
+  tasks:
+    - name: Configure SNMP Location
+      nxos_snmp_location:
+        provider: "{{ provider_ssh }}"
+        location: "San Jose, CA"
+      notify: write mem
+    
+    - name: Configure SNMP Contact
+      nxos_snmp_contact:
+        provider: "{{ provider_ssh }}"
+        contact: "Bob Mann"
+      notify: write mem
+      
+  handlers:
+    - name: write mem
+      nxos_command:
+        provider: "{{ provider_ssh }}"
+        commands: copy run start
+        timeout: 60
+      changed_when: True
