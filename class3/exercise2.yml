@@ -13,9 +13,9 @@
       with_items: "{{ interfaces }}"
       notify: write mem
     
-    handlers:
-      - name: write mem
-        nxos_command:
-          provider: "{{ provider_ssh }}"
-          commands: copy running-config startup-config
-        changed_when: True
+  handlers:
+    - name: write mem
+      nxos_command:
+        provider: "{{ provider_ssh }}"
+        commands: copy running-config startup-config
+      changed_when: True
