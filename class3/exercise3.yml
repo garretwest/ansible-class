@@ -1,0 +1,29 @@
+---
+- name: Class 3 Exercise 3
+  hosts: nxos
+  tasks:
+    - name: Configure IP Addresses
+      nxos_ip_interface:
+        provider: "{{ provider_ssh }}"
+        interface: "{{ item.interface }}"
+        addr: "{{ item.addr }}"
+        mask: "{{ item.mask }}"
+        version: "{{ item.version }}"
+        state: "{{ item.state|default('present') }}"
+      with_items: "{{ interfaces }}"
+      notify: write mem
+    
+    - name: Ping validation
+      nxos_ping:
+        provider: "{{ provider_ssh }}"
+        dest: "{{ item.addr }}"
+      with_items: "{{ interfaces }}"
+      when:
+      
+  handlers:
+    - name: write mem
+      nxos_command:
+        provider: "{{ provider_ssh }}"
+        commands: copy run start
+        timeout: 60
+      changed_when: True
