@@ -1,0 +1,7 @@
+---
+- name: Gather Facts
+  hosts: nxos
+  tasks:
+    - name: Gather Facts
+      nxos_facts:
+        provider: "{{ provider_nxapi }}"
