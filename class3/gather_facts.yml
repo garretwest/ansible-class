@@ -20,7 +20,7 @@
 
     - name: Interface Table set fact
       set_fact:
-        interface_table: "{{ show_ip_int.stdout_lines.TABLE_intf }}"
+        interface_table: "{{ show_ip_int.stdout_lines[0].TABLE_intf }}"
 
     - name: Print Interface Table
       debug:
@@ -34,7 +34,7 @@
     - name: Print Interface Table
       debug:
         var: item.intf-name
-      with_items: "{{ interface_table.ROW_intf }}"
+      with_items: "{{ interface_table }}"
 
 #    - name: Copy to File
 #      lineinfile:
