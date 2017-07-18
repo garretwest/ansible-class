@@ -4,13 +4,13 @@
   gather_facts: no
   
   tasks:
-    - name: Gather Facts
-      nxos_facts:
-        provider: "{{ provider_nxapi }}"
+#    - name: Gather Facts
+#      nxos_facts:
+#        provider: "{{ provider_nxapi }}"
 
     - name: Show IP Int Br VLAN NXOS Command
       nxos_command:
-        provider: "{{ provider_nxapi }}"
+        provider: "{{ provider_ssh }}"
         commands: "show ip int br"
       register: vlan_int
       
