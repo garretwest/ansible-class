@@ -34,7 +34,7 @@
     - name: Print Interface Table
       debug:
         var: item.value.intf-name
-      with_items: "{{ interface_table }}"
+      with_dict: "{{ interface_table }}"
 
 #    - name: Copy to File
 #      lineinfile:
