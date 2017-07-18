@@ -33,7 +33,7 @@
     
     - name: Copy to File
       lineinfile:
-        line="{{ item.intf-name }}-{{ inventory_hostname }} {{ item.prefix }}"
+        line="{{ item.value.intf-name }}-{{ inventory_hostname }} {{ item.value.prefix }}"
         dest=./dnsnames.txt
         state=present
         create=yes
