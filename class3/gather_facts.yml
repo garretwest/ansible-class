@@ -38,7 +38,7 @@
         state=present
         create=yes
         insertafter=EOF
-      with_items: "{{ interface_table }}"
+      with_items: "{{ interface_table[0] }}"
 #      when: item.value.prefix is defined
 
 #    - name: Gather gateway MAC
