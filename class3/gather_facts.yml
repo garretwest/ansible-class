@@ -30,15 +30,20 @@
       file:
         path: ./dnsnames.txt
         state: absent
-    
-    - name: Copy to File
-      lineinfile:
-        line="{{ item.value.intf-name }}-{{ inventory_hostname }} {{ item.value.prefix }}"
-        dest=./dnsnames.txt
-        state=present
-        create=yes
-        insertafter=EOF
-      with_items: "{{ interface_table[0] }}"
+
+    - name: Print Interface Table
+      debug:
+        var: item.value.intf-name
+      with_items: "{{ interface_table }}"
+
+#    - name: Copy to File
+#      lineinfile:
+#        line="{{ item.value.intf-name }}-{{ inventory_hostname }} {{ item.value.prefix }}"
+#        dest=./dnsnames.txt
+#        state=present
+#        create=yes
+#        insertafter=EOF
+#      with_items: "{{ interface_table }}"
 #      when: item.value.prefix is defined
 
 #    - name: Gather gateway MAC
