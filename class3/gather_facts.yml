@@ -10,21 +10,21 @@
 
     - name: Show IP Int Br VLAN NXOS Command
       nxos_command:
-        provider: "{{ provider_ssh }}"
+        provider: "{{ provider_nxapi }}"
         commands: "show ip int br"
-      register: vlan_int
+      register: show_ip_int
       
     - name: Print show arp output
       debug:
-        var: vlan_int
+        var: show_ip_int
 
-#    - name: MAC Table set fact
-#      set_fact:
-#        mac_table: "{{ show_arp.stdout_lines[0].ipV4Neighbors }}"
+    - name: Interface Table set fact
+      set_fact:
+        interface_table: "{{ show_ip_int.stdout_lines[0].TABLE_intf }}"
 
-#    - name: Print MAC Table
-#      debug:
-#        var: mac_table
+    - name: Print Interface Table
+      debug:
+        var: interface_table
 
 #    - name: Gather gateway MAC
 #      set_fact:
