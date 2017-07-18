@@ -20,7 +20,7 @@
 
     - name: Interface Table set fact
       set_fact:
-        interface_table: "{{ show_ip_int.stdout_lines[0].TABLE_intf }}"
+        interface_table: "{{ show_ip_int.stdout_lines[0].TABLE_intf.ROW_intf }}"
 
     - name: Print Interface Table
       debug:
