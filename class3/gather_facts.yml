@@ -1,7 +1,37 @@
 ---
 - name: Gather Facts
   hosts: nxos
+  gather_facts: no
+  
   tasks:
     - name: Gather Facts
       nxos_facts:
         provider: "{{ provider_nxapi }}"
+
+    - name: Show IP Int Br VLAN NXOS Command
+      nxos_command:
+        provider: "{{ provider_nxapi }}"
+        commands: "show ip int br | i Vlan"
+      register: vlan_int
+      
+    - name: Print show arp output
+      debug:
+        var: vlan_int
+
+#    - name: MAC Table set fact
+#      set_fact:
+#        mac_table: "{{ show_arp.stdout_lines[0].ipV4Neighbors }}"
+
+#    - name: Print MAC Table
+#      debug:
+#        var: mac_table
+
+#    - name: Gather gateway MAC
+#      set_fact:
+#        gateway_mac: "{{ item.hwAddress }}"
+#      with_items: "{{ mac_table }}"
+#      when: item.address == '10.220.88.1'
+      
+#    - name: Print Gateway MAC
+#      debug:
+#        var: gateway_mac
