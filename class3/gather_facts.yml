@@ -33,8 +33,8 @@
 
     - name: Print Interface Table
       debug:
-        var: item.key.intf-name
-      with_items: "{{ interface_table }}"
+        var: item.intf-name
+      with_items: "{{ interface_table.ROW_intf }}"
 
 #    - name: Copy to File
 #      lineinfile:
