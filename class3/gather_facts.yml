@@ -33,7 +33,7 @@
 
     - name: Print Interface Name
       debug:
-        var: item.ROW_intf.iod
+        var: item.ROW_intf.admin-state
       with_items: "{{ interface_table }}"
 
 #    - name: Copy to File
