@@ -33,7 +33,7 @@
 
     - name: Print Interface Name
       debug:
-        msg: "{{ item.ROW_intf.intf-name }}"
+        msg: item.ROW_intf.intf-name
       with_items: "{{ interface_table }}"
 
 #    - name: Copy to File
