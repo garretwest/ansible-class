@@ -30,8 +30,8 @@
 
     - name: Print Interface Name
       debug:
-        var: item.ROW_grp_detail.sh_if_index
-      with_items: "{{ hsrp_table }}"
+        var: item.sh_if_index
+      with_items: "{{ hsrp_table.ROW_grp_detail }}"
 
 #    - name: Copy to File
 #      lineinfile:
