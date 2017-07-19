@@ -28,10 +28,10 @@
 #        path: ./dnsnames.txt
 #        state: absent
 
-#    - name: Print Interface Name
-#      debug:
-#        var: item.ROW_intf["intf-name"]
-#      with_items: "{{ interface_table }}"
+    - name: Print Interface Name
+      debug:
+        var: item.ROW_grp_detail["sh_if_index"]
+      with_items: "{{ hsrp_table }}"
 
 #    - name: Copy to File
 #      lineinfile:
