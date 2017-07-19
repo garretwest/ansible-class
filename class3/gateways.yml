@@ -11,17 +11,17 @@
         commands: "show hsrp br"
       register: hsrp
       
-    - name: Print hsrp output
-      debug:
-        var: hsrp
-
-#    - name: Interface Table set fact
-#      set_fact:
-#        interface_table: "{{ show_ip_int.stdout_lines[0].TABLE_intf }}"
-
-#    - name: Print Interface Table
+#    - name: Print hsrp output
 #      debug:
-#        var: interface_table
+#        var: hsrp
+
+    - name: HSRP Table set fact
+      set_fact:
+        hsrp_table: "{{ hsrp.stdout_lines[0].TABLE_grp_detail }}"
+
+    - name: Print HSRP Table
+      debug:
+        var: hsrp_table
 
 #    - name: Delete File
 #      file:
