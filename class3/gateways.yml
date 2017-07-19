@@ -18,6 +18,7 @@
     - name: HSRP Table set fact
       set_fact:
         hsrp_table: "{{ hsrp.stdout_lines[0].TABLE_grp_detail }}"
+      ignore_errors: yes
 
     - name: Print HSRP Table
       debug:
