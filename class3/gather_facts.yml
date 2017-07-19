@@ -31,9 +31,9 @@
         path: ./dnsnames.txt
         state: absent
 
-    - name: Print Interface Table
+    - name: Print Interface Name
       debug:
-        var: item.ROW_intf.value.intf-name
+        var: item.ROW_intf
       with_items: "{{ interface_table }}"
 
 #    - name: Copy to File
