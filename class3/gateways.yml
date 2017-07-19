@@ -33,6 +33,7 @@
       debug:
         var: item.sh_vip
       with_items: "{{ hsrp_table.ROW_grp_detail }}"
+      ignore_errors: yes
 
 #    - name: Copy to File
 #      lineinfile:
