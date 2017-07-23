@@ -1,0 +1,16 @@
+---
+vlans_unique:
+  - vlan_id: 304
+    name: yellow
+
+interfaces:
+  - interface: Ethernet 2/3
+    addr: 10.36.28.1
+    remote_addr: 10.36.28.2
+    mask: 24
+    version: v4
+  - interface: Ethernet 2/4
+    addr: 2001::db8:2222:200c:1
+    remote_addr: 2001::db8:2222:200c:2
+    mask: 64
+    version: v6
