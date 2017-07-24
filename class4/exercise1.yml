@@ -8,9 +8,9 @@
       eos_config:
         provider: "{{ provider_eapi }}"
         lines:
-          - ip route 1.1.6.9/32 "{{ default_gateway }}"
-          - ip route 1.1.66.99/32 "{{ default_gateway }}"
-          - ip route 1.1.69.69/32 "{{ default_gateway }}"
-          - ip route 1.1.6.66/32 "{{ default_gateway }}"
+          - ip route 1.1.6.9/32 {{ default_gateway }}
+          - ip route 1.1.66.99/32 {{ default_gateway }}
+          - ip route 1.1.69.69/32 {{ default_gateway }}
+          - ip route 1.1.6.66/32 {{ default_gateway }}
         match: line
         replace: line
