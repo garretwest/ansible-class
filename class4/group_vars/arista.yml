@@ -6,3 +6,5 @@ provider_eapi:
   transport: eapi
   use_ssl: True
   validate_certs: no
+
+default_gateway: 
