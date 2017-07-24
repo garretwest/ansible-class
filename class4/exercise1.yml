@@ -1,10 +1,11 @@
 ---
-- name: Class 3 Exercise 1
-  hosts: nxos
+- name: Class 4 Exercise 1
+  hosts: pynet-sw7
+  gather_facts:no
   tasks:
-    - name: Configure VLANs
-      nxos_vlan:
-        provider: "{{ provider_nxapi }}"
+    - name: Configure Static Routes
+      eos_config:
+        provider: "{{ provider_eapi }}"
         vlan_id: "{{ item.vlan_id }}"
         name: "{{ item.name }}"
       with_items: "{{ vlans }}"
