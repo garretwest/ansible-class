@@ -7,4 +7,4 @@ provider_eapi:
   use_ssl: True
   validate_certs: no
 
-default_gateway: 
+default_gateway: 10.220.88.1
