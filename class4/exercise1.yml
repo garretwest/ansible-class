@@ -1,7 +1,7 @@
 ---
 - name: Class 4 Exercise 1
   hosts: pynet-sw7
-  gather_facts:no
+  gather_facts: no
   
   tasks:
     - name: Configure Static Routes
