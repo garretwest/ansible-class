@@ -9,7 +9,7 @@
         provider: "{{ provider_eapi }}"
         lines:
           - name "{{ vlan_name }}"
-        parents: vlan "{{ item.vlan_id }}"
+        parents: vlan "{{ vlan_id }}"
         match: line
         replace: line
         with_items: "{{ arista_vlans }}"
