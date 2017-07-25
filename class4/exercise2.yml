@@ -1,22 +1,15 @@
 ---
-- name: Class 3 Exercise 2
-  hosts: nxos
+- name: Class 4 Exercise 2
+  hosts: arista
+  gather_facts: no
+  
   tasks:
-    - name: Configure IP Addresses
-      nxos_ip_interface:
-        provider: "{{ provider_ssh }}"
-        interface: "{{ item.interface }}"
-        addr: "{{ item.addr }}"
-        mask: "{{ item.mask }}"
-        version: "{{ item.version }}"
-        state: "{{ item.state|default('present') }}"
-      with_items: "{{ interfaces }}"
-      notify: write mem
-    
-  handlers:
-    - name: write mem
-      nxos_command:
-        provider: "{{ provider_ssh }}"
-        commands: copy run start
-        timeout: 60
-      changed_when: True
+    - name: Configure VLANs
+      eos_config:
+        provider: "{{ provider_eapi }}"
+        lines:
+          - name {{ item.vlan_name }}
+        parents: vlan {{ item.vlan_id }}
+        match: line
+        replace: line
+        with_items: "{{ arista_vlans }}"
