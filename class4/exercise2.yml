@@ -8,7 +8,7 @@
       eos_config:
         provider: "{{ provider_eapi }}"
         lines:
-          - name "{{ item.vlan_name }}"
+          - name "{{ vlan_name }}"
         parents: vlan "{{ item.vlan_id }}"
         match: line
         replace: line
