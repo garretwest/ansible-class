@@ -8,3 +8,13 @@ provider_eapi:
   validate_certs: no
 
 default_gateway: 10.220.88.1
+
+arista_vlans:
+  - vlan_id: 256
+    vlan_name: my
+  - vlan_id: 257
+    vlan_name: name
+  - vlan_id: 258
+    vlan_name: is
+  - vlan_id: 259
+    vlan_name: garret
