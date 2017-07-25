@@ -12,4 +12,4 @@
         parents: "vlan {{ item.vlan_id }}"
         match: line
         replace: line
-        with_items: "{{ arista_vlans }}"
+      with_items: "{{ arista_vlans }}"
