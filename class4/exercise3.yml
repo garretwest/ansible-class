@@ -1,4 +1,22 @@
 ---
+- name: Configure Arista EOS
+  hosts: pynet-sw5
+  gather_facts: no
+  
+  tasks:
+    - name: Configure VLANs
+      eos_config:
+        provider: "{{ provider_eapi }}"
+        lines:
+          - "ip address {{  }}"
+        parents: "interface {{ item.interface }}"
+        match: line
+        replace: line
+      with_items: "{{ interfaces }}"
+
+
+
+---
 - name: Class 3 Exercise 3
   hosts: nxos
   tasks:
