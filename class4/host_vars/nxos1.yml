@@ -4,13 +4,8 @@ vlans_unique:
     name: yellow
 
 interfaces:
-  - interface: Ethernet 2/3
-    addr: 10.36.28.1
-    remote_addr: 10.36.28.2
-    mask: 24
-    version: v4
-  - interface: Ethernet 2/4
-    addr: 2001::db8:2222:200c:1
-    remote_addr: 2001::db8:2222:200c:2
-    mask: 64
-    version: v6
+  - interface: loopback69
+    ipv4_address: 1.1.1.71
+    ipv4_mask: "/32"
+    ipv6_address: 2001:db8::71
+    ipv6_mask: "/64"
