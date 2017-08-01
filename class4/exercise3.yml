@@ -9,7 +9,7 @@
         provider: "{{ provider_eapi }}"
         lines:
           - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
-          - "ip address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
         parents: "interface {{ item.interface }}"
         match: line
         replace: line
@@ -25,7 +25,7 @@
         provider: "{{ provider_ios }}"
         lines:
           - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
-          - "ip address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
         parents: "interface {{ item.interface }}"
         match: line
         replace: line
@@ -41,7 +41,7 @@
         provider: "{{ provider_nxapi }}"
         lines:
           - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
-          - "ip address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
         parents: "interface {{ item.interface }}"
         match: line
         replace: line
