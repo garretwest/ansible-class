@@ -4,44 +4,45 @@
   gather_facts: no
   
   tasks:
-    - name: Configure VLANs
+    - name: Configure Interfaces
       eos_config:
         provider: "{{ provider_eapi }}"
         lines:
-          - "ip address {{  }}"
+          - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
+          - "ip address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
         parents: "interface {{ item.interface }}"
         match: line
         replace: line
       with_items: "{{ interfaces }}"
 
-
-
----
-- name: Class 3 Exercise 3
-  hosts: nxos
+- name: Configure Cisco IOS
+  hosts: pynet-rtr1
+  gather_facts: no
+  
   tasks:
-    - name: Configure IP Addresses
-      nxos_ip_interface:
-        provider: "{{ provider_ssh }}"
-        interface: "{{ item.interface }}"
-        addr: "{{ item.addr }}"
-        mask: "{{ item.mask }}"
-        version: "{{ item.version }}"
-        state: "{{ item.state|default('present') }}"
+    - name: Configure Interfaces
+      ios_config:
+        provider: "{{ provider_ios }}"
+        lines:
+          - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
+          - "ip address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+        parents: "interface {{ item.interface }}"
+        match: line
+        replace: line
       with_items: "{{ interfaces }}"
-      notify: write mem
-    
-    - name: Ping validation
-      nxos_ping:
-        provider: "{{ provider_ssh }}"
-        dest: "{{ item.remote_addr }}"
+
+- name: Configure NXOS
+  hosts: nxos1
+  gather_facts: no
+  
+  tasks:
+    - name: Configure Interfaces
+      nxos_config:
+        provider: "{{ provider_nxapi }}"
+        lines:
+          - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
+          - "ip address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+        parents: "interface {{ item.interface }}"
+        match: line
+        replace: line
       with_items: "{{ interfaces }}"
-      when: item.version == 'v4'
-      
-  handlers:
-    - name: write mem
-      nxos_command:
-        provider: "{{ provider_ssh }}"
-        commands: copy run start
-        timeout: 60
-      changed_when: True
