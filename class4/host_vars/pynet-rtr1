@@ -1,6 +1,6 @@
 interfaces:
   - interface: loopback70
     ipv4_address: 1.1.1.70
-    ipv4_mask: "/32"
+    ipv4_mask: 255.255.255.255
     ipv6_address: 2001:db8::70
-    ipv6_mask: "/64"
+    ipv6_mask: /64
