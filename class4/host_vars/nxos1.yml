@@ -4,7 +4,7 @@ vlans_unique:
     name: yellow
 
 interfaces:
-  - interface: loopback69
+  - interface: loopback71
     ipv4_address: 1.1.1.71
     ipv4_mask: "/32"
     ipv6_address: 2001:db8::71
