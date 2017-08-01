@@ -1,23 +1,15 @@
 ---
-- name: Class 3 Exercise 4
-  hosts: nxos
+- name: Configure Cisco IOS
+  hosts: cisco
+  gather_facts: no
+  
   tasks:
-    - name: Configure SNMP Location
-      nxos_snmp_location:
-        provider: "{{ provider_ssh }}"
-        location: "San Jose, CA"
-      notify: write mem
-    
-    - name: Configure SNMP Contact
-      nxos_snmp_contact:
-        provider: "{{ provider_ssh }}"
-        contact: "Bob Mann"
-      notify: write mem
-      
-  handlers:
-    - name: write mem
-      nxos_command:
-        provider: "{{ provider_ssh }}"
-        commands: copy run start
-        timeout: 60
-      changed_when: True
+    - name: Configure SNMP Contact and Location
+      ios_config:
+        provider: "{{ provider_ios }}"
+        lines:
+          - "ip address {{ snmp_contact }} {{ item.ipv4_mask }}"
+          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+        parents: "interface {{ item.interface }}"
+        match: line
+        replace: line
