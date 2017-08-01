@@ -24,7 +24,7 @@
       ios_config:
         provider: "{{ provider_ios }}"
         lines:
-          - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
+          - "ip address {{ item.ipv4_address }} {{ item.ipv4_mask }}"
           - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
         parents: "interface {{ item.interface }}"
         match: line
