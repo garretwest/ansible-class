@@ -8,8 +8,7 @@
       ios_config:
         provider: "{{ provider_ios }}"
         lines:
-          - "ip address {{ snmp_contact }} {{ item.ipv4_mask }}"
-          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
-        parents: "interface {{ item.interface }}"
+          - "snmp-server contact {{ snmp_contact }}"
+          - "snmp-server location {{ snmp_location }}"
         match: line
         replace: line
