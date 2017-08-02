@@ -11,39 +11,39 @@
         commands: "show cdp neighbors detail"
       register: cdp
       
-    - name: Print CDP output
-      debug:
-        var: cdp
+#    - name: Print CDP output
+#      debug:
+#        var: cdp
 
     - name: CDP Table set fact
       set_fact:
         cdp_table: "{{ cdp.stdout_lines[0].TABLE_cdp_neighbor_detail_info }}"
       ignore_errors: yes
 
-    - name: Print CDP Table
-      debug:
-        var: cdp_table
+#    - name: Print CDP Table
+#      debug:
+#        var: cdp_table
 
 #    - name: Delete File
 #      file:
 #        path: ./gateways.txt
 #        state: absent
 
-    - name: Print Device Name
-      debug:
-        var: item.sysname
-      with_items: "{{ cdp_table.ROW_cdp_neighbor_detail_info }}"
-      ignore_errors: yes
+#    - name: Print Device Name
+#      debug:
+#        var: item.sysname
+#      with_items: "{{ cdp_table.ROW_cdp_neighbor_detail_info }}"
+#      ignore_errors: yes
 
-#    - name: Copy to File
-#      lineinfile:
-#        line="{{ item.sh_if_index }}-{{ inventory_hostname }} {{ item.sh_vip }}"
-#        dest=./gateways.txt
-#        state=present
-#        create=yes
-#        insertafter=EOF
-#      with_items: "{{ hsrp_table.ROW_grp_detail }}"
-#      when: item.sh_group_state == "Initial"
+    - name: Copy to File
+      lineinfile:
+        line="{{ item.v4addr }} {{ item.sysname }}.nvidia.com"
+        dest=./cdp_neighbors.txt
+        state=present
+        create=yes
+        insertafter=EOF
+      with_items: "{{ cdp_table.ROW_cdp_neighbor_detail_info }}"
+
 
 #    - name: Gather gateway MAC
 #      set_fact:
