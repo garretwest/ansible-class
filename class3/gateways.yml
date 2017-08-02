@@ -24,10 +24,10 @@
 #      debug:
 #        var: cdp_table
 
-#    - name: Delete File
-#      file:
-#        path: ./gateways.txt
-#        state: absent
+    - name: Delete File
+      file:
+        path: ./cdp_neighbors.txt
+        state: absent
 
 #    - name: Print Device Name
 #      debug:
