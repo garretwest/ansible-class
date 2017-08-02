@@ -15,25 +15,25 @@
       debug:
         var: cdp_output
 
-#    - name: HSRP Table set fact
-#      set_fact:
-#        hsrp_table: "{{ hsrp.stdout_lines[0].TABLE_grp_detail }}"
-#      ignore_errors: yes
+    - name: CDP Table set fact
+      set_fact:
+        cdp_table: "{{ cdp.stdout_lines[0].TABLE_cdp_neighbor_detail_info }}"
+      ignore_errors: yes
 
-#    - name: Print HSRP Table
-#      debug:
-#        var: hsrp_table
+    - name: Print CDP Table
+      debug:
+        var: cdp_table
 
 #    - name: Delete File
 #      file:
 #        path: ./gateways.txt
 #        state: absent
 
-#    - name: Print Interface Name
-#      debug:
-#        var: item.sh_vip
-#      with_items: "{{ hsrp_table.ROW_grp_detail }}"
-#      when: item.sh_group_state == "Active"
+    - name: Print Device Name
+      debug:
+        var: item.sysname
+      with_items: "{{ cdp_table.ROW_cdp_neighbor_detail_info }}"
+      when: item.sh_group_state == "Active"
       ignore_errors: yes
 
 #    - name: Copy to File
