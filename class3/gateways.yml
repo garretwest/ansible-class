@@ -5,35 +5,35 @@
   
   tasks:
 
-    - name: Show hsrp br VLAN NXOS Command
+    - name: Show cdp neighbors detail NXOS Command
       nxos_command:
         provider: "{{ provider_nxapi }}"
-        commands: "show hsrp br"
-      register: hsrp
+        commands: "show cdp neighbors detail"
+      register: cdp_output
       
-#    - name: Print hsrp output
-#      debug:
-#        var: hsrp
-
-    - name: HSRP Table set fact
-      set_fact:
-        hsrp_table: "{{ hsrp.stdout_lines[0].TABLE_grp_detail }}"
-      ignore_errors: yes
-
-    - name: Print HSRP Table
+    - name: Print CDP output
       debug:
-        var: hsrp_table
+        var: cdp_output
+
+#    - name: HSRP Table set fact
+#      set_fact:
+#        hsrp_table: "{{ hsrp.stdout_lines[0].TABLE_grp_detail }}"
+#      ignore_errors: yes
+
+#    - name: Print HSRP Table
+#      debug:
+#        var: hsrp_table
 
 #    - name: Delete File
 #      file:
 #        path: ./gateways.txt
 #        state: absent
 
-    - name: Print Interface Name
-      debug:
-        var: item.sh_vip
-      with_items: "{{ hsrp_table.ROW_grp_detail }}"
-      when: item.sh_group_state == "Active"
+#    - name: Print Interface Name
+#      debug:
+#        var: item.sh_vip
+#      with_items: "{{ hsrp_table.ROW_grp_detail }}"
+#      when: item.sh_group_state == "Active"
       ignore_errors: yes
 
 #    - name: Copy to File
