@@ -9,11 +9,11 @@
       nxos_command:
         provider: "{{ provider_nxapi }}"
         commands: "show cdp neighbors detail"
-      register: cdp_output
+      register: cdp
       
     - name: Print CDP output
       debug:
-        var: cdp_output
+        var: cdp
 
     - name: CDP Table set fact
       set_fact:
