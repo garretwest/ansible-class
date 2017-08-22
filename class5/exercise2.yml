@@ -17,6 +17,10 @@
         provider: "{{ creds }}"
         filter: "interfaces_ip"
 
+    - assert:
+        that: item.ipv4 in ["10.20.30.40", "10.20.30.41"]
+      with_items: "{{ napalm_interfaces_ip }}"
+
 #    - name: Interfaces Set Fact
 #      set_fact:
 #        interfaces_ip_table: "{{ napalm_interfaces_ip[item].ipv4 }}"
@@ -27,15 +31,15 @@
 #        device_ip: "{{ item }}"
 #      with_items: "{{ interfaces_ip_table }}"
 
-    - name: Interfaces Set Fact
-      set_fact:
-        interfaces_ip_table: "{{ [napalm_interfaces_ip.item.ipv4] }}"
-      with_items: "{{ napalm_interfaces_ip }}"
-      ignore_errors: yes
+#    - name: Interfaces Set Fact
+#      set_fact:
+#        interfaces_ip_table: "{{ [napalm_interfaces_ip.item.ipv4] }}"
+#      with_items: "{{ napalm_interfaces_ip }}"
+#      ignore_errors: yes
     
-    - set_fact:
-        device_ip: "{{ [item.ipv4] }}"
-      with_items: "{{ interfaces_ip_table }}"
+#    - set_fact:
+#        device_ip: "{{ [item.ipv4] }}"
+#      with_items: "{{ interfaces_ip_table }}"
 
-    - assert:
-        that: device_ip in ["10.20.30.40", "10.20.30.41"]
+#    - assert:
+#        that: device_ip in ["10.20.30.40", "10.20.30.41"]
