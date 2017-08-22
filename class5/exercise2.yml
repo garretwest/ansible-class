@@ -23,8 +23,9 @@
       with_items: "{{ napalm_interfaces_ip }}"
       ignore_errors: yes
     
-    - debug:
-        var: interfaces_ip_table
+    - set_fact:
+        device_ip: "{{ item }}"
+      with_items: "{{ interfaces_ip_table }}"
 
     - assert:
-        that: interfaces_ip_table in ["10.20.30.40", "10.20.30.41"]
+        that: device_ip in ["10.20.30.40", "10.20.30.41"]
