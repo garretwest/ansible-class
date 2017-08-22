@@ -18,3 +18,10 @@ arista_vlans:
     vlan_name: is
   - vlan_id: 259
     vlan_name: garret
+
+creds:
+  host: "{{ ansible_host }}"
+  username: "{{ username }}"
+  password: "{{ password }}"
+  dev_os: "eos"
+  optional_args: {}
