@@ -16,4 +16,4 @@
       ignore_errors: yes
     
     - debug:
-      var: lldp_table
+        var: lldp_table
