@@ -19,4 +19,4 @@
         var: lldp_table
 
     - assert:
-        that: lldp_table.hostname == "twb-sf-hpsw2"
+        that: lldp_table.hostname == "twb-sf-hpsw1"
