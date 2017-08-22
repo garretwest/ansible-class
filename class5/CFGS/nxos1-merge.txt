@@ -1,2 +1,5 @@
-interface eth 2/3
+interface ethernet 2/3
   ip address 10.20.30.40/24
+
+interface ethernet 2/4
+  ip address 10.20.30.50/24
