@@ -17,10 +17,6 @@
         provider: "{{ creds }}"
         filter: "interfaces_ip"
 
-    - assert:
-        that: item in ["10.20.30.40", "10.20.30.41"]
-      with_items: "{{ napalm_interfaces_ip.ipv4 }}"
-
 #    - name: Interfaces Set Fact
 #      set_fact:
 #        interfaces_ip_table: "{{ napalm_interfaces_ip[item].ipv4 }}"
