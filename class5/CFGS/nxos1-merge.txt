@@ -1,0 +1,2 @@
+interface eth 2/3
+  ip address 10.20.30.40/24
