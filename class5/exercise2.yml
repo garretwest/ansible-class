@@ -26,5 +26,5 @@
     - debug:
         var: interfaces_ip_table
 
-#    - assert:
-#        that: interfaces_ip_table in ["10.20.30.40", "10.20.30.41"]
+    - assert:
+        that: interfaces_ip_table in ["10.20.30.40", "10.20.30.41"]
