@@ -17,14 +17,14 @@
         provider: "{{ creds }}"
         filter: "interfaces_ip"
 
-#    - name: LLDP Simple Set Fact
-#      set_fact:
-#        lldp_table: "{{ napalm_lldp_neighbors[item][0] }}"
-#      with_items: "{{ napalm_lldp_neighbors }}"
-#      ignore_errors: yes
+    - name: Interfaces Set Fact
+      set_fact:
+        interfaces_ip_table: "{{ napalm_interfaces_ip[item][ipv4] }}"
+      with_items: "{{ napalm_interfaces_ip }}"
+      ignore_errors: yes
     
-#    - debug:
-#        var: lldp_table
+    - debug:
+        var: interfaces_ip_table
 
 #    - assert:
-#        that: lldp_table.hostname == "twb-sf-hpsw1"
+#        that: interfaces_ip_table in ["10.20.30.40", "10.20.30.41"]
