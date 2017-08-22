@@ -8,3 +8,12 @@
       napalm_get_facts:
         provider: "{{ creds }}"
         filter: "lldp_neighbors"
+      register: lldp
+    
+    - name: Print CDP output
+      debug:
+        var: lldp
+    
+#    - name: LLDP Simple Set Fact
+#      set_fact:
+        
