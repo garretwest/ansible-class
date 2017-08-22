@@ -23,3 +23,11 @@ vlans_common:
     name: green
 
 vlans: "{{ vlans_common + vlans_unique|default() }}"
+
+creds:
+  host: "{{ ansible_host }}"
+  username: "{{ username }}"
+  password: "{{ password }}"
+  dev_os: "nxos"
+  optional_args:
+    port: 8443
