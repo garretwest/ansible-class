@@ -29,12 +29,12 @@
 
     - name: Interfaces Set Fact
       set_fact:
-        interfaces_ip_table: "{{ napalm_interfaces_ip[item] }}"
+        interfaces_ip_table: "{{ [napalm_interfaces_ip.item.ipv4] }}"
       with_items: "{{ napalm_interfaces_ip }}"
       ignore_errors: yes
     
     - set_fact:
-        device_ip: [item.ipv4]
+        device_ip: "{{ [item.ipv4] }}"
       with_items: "{{ interfaces_ip_table }}"
 
     - assert:
