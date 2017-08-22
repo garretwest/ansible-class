@@ -1,0 +1,14 @@
+---
+- name: Configure Cisco IOS
+  hosts: cisco
+  gather_facts: no
+  
+  tasks:
+    - name: Configure SNMP Contact and Location
+      ios_config:
+        provider: "{{ provider_ios }}"
+        lines:
+          - "snmp-server contact {{ snmp_contact }}"
+          - "snmp-server location {{ snmp_location }}"
+        match: line
+        replace: line

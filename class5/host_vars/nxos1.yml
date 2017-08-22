@@ -1,0 +1,11 @@
+---
+vlans_unique:
+  - vlan_id: 304
+    name: yellow
+
+interfaces:
+  - interface: loopback171
+    ipv4_address: 1.1.1.171
+    ipv4_mask: "/32"
+    ipv6_address: 2001:db8::171
+    ipv6_mask: "/64"

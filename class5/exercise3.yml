@@ -1,0 +1,48 @@
+---
+- name: Configure Arista EOS
+  hosts: pynet-sw5
+  gather_facts: no
+  
+  tasks:
+    - name: Configure Interfaces
+      eos_config:
+        provider: "{{ provider_eapi }}"
+        lines:
+          - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
+          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+        parents: "interface {{ item.interface }}"
+        match: line
+        replace: line
+      with_items: "{{ interfaces }}"
+
+- name: Configure Cisco IOS
+  hosts: pynet-rtr1
+  gather_facts: no
+  
+  tasks:
+    - name: Configure Interfaces
+      ios_config:
+        provider: "{{ provider_ios }}"
+        lines:
+          - "ip address {{ item.ipv4_address }} {{ item.ipv4_mask }}"
+          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+        parents: "interface {{ item.interface }}"
+        match: line
+        replace: line
+      with_items: "{{ interfaces }}"
+
+- name: Configure NXOS
+  hosts: nxos1
+  gather_facts: no
+  
+  tasks:
+    - name: Configure Interfaces
+      nxos_config:
+        provider: "{{ provider_nxapi }}"
+        lines:
+          - "ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}"
+          - "ipv6 address {{ item.ipv6_address }}{{ item.ipv6_mask }}"
+        parents: "interface {{ item.interface }}"
+        match: line
+        replace: line
+      with_items: "{{ interfaces }}"

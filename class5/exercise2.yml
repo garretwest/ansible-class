@@ -1,0 +1,15 @@
+---
+- name: Class 4 Exercise 2
+  hosts: arista
+  gather_facts: no
+  
+  tasks:
+    - name: Configure VLANs
+      eos_config:
+        provider: "{{ provider_eapi }}"
+        lines:
+          - "name {{ item.vlan_name }}"
+        parents: "vlan {{ item.vlan_id }}"
+        match: line
+        replace: line
+      with_items: "{{ arista_vlans }}"

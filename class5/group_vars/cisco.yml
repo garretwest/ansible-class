@@ -1,0 +1,8 @@
+---
+provider_ios:
+  host: "{{ ansible_host }}"
+  username: "{{ username }}"
+  password: "{{ password }}"
+
+snmp_contact: Garret West
+snmp_location: Santa Clara, CA

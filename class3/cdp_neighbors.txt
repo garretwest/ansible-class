@@ -1,0 +1,2 @@
+10.0.0.72 nxos2.nvidia.com
+10.0.0.71 nxos1.nvidia.com
