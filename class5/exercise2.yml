@@ -12,10 +12,10 @@
         replace_config: False
         diff_file: "DIFFS/{{ inventory_hostname }}.txt"
     
-#    - name: Napalm LLDP
-#      napalm_get_facts:
-#        provider: "{{ creds }}"
-#        filter: "lldp_neighbors"
+    - name: NAPALM Get Interfaces
+      napalm_get_facts:
+        provider: "{{ creds }}"
+        filter: "interfaces_ip"
 
 #    - name: LLDP Simple Set Fact
 #      set_fact:
