@@ -12,19 +12,19 @@
         replace_config: False
         diff_file: "DIFFS/{{ inventory_hostname }}.txt"
     
-    - name: Napalm LLDP
-      napalm_get_facts:
-        provider: "{{ creds }}"
-        filter: "lldp_neighbors"
+#    - name: Napalm LLDP
+#      napalm_get_facts:
+#        provider: "{{ creds }}"
+#        filter: "lldp_neighbors"
 
-    - name: LLDP Simple Set Fact
-      set_fact:
-        lldp_table: "{{ napalm_lldp_neighbors[item][0] }}"
-      with_items: "{{ napalm_lldp_neighbors }}"
-      ignore_errors: yes
+#    - name: LLDP Simple Set Fact
+#      set_fact:
+#        lldp_table: "{{ napalm_lldp_neighbors[item][0] }}"
+#      with_items: "{{ napalm_lldp_neighbors }}"
+#      ignore_errors: yes
     
-    - debug:
-        var: lldp_table
+#    - debug:
+#        var: lldp_table
 
-    - assert:
-        that: lldp_table.hostname == "twb-sf-hpsw1"
+#    - assert:
+#        that: lldp_table.hostname == "twb-sf-hpsw1"
