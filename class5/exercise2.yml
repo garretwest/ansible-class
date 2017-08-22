@@ -1,15 +1,30 @@
 ---
-- name: Class 4 Exercise 2
-  hosts: arista
+- name: Class 5 Exercise 2
+  hosts: nxos
   gather_facts: no
   
   tasks:
-    - name: Configure VLANs
-      eos_config:
-        provider: "{{ provider_eapi }}"
-        lines:
-          - "name {{ item.vlan_name }}"
-        parents: "vlan {{ item.vlan_id }}"
-        match: line
-        replace: line
-      with_items: "{{ arista_vlans }}"
+    - name: NAPALM Merge
+      napalm_install_config:
+        provider: "{{ creds }}"
+        config_file: "CFGS/{{ inventory_hostname }}-merge.txt"
+        commit_changes: False
+        replace_config: False
+        diff_file: "DIFFS/{{ inventory_hostname }}.txt"
+    
+    - name: Napalm LLDP
+      napalm_get_facts:
+        provider: "{{ creds }}"
+        filter: "lldp_neighbors"
+
+    - name: LLDP Simple Set Fact
+      set_fact:
+        lldp_table: "{{ napalm_lldp_neighbors[item][0] }}"
+      with_items: "{{ napalm_lldp_neighbors }}"
+      ignore_errors: yes
+    
+    - debug:
+        var: lldp_table
+
+    - assert:
+        that: lldp_table.hostname == "twb-sf-hpsw1"
