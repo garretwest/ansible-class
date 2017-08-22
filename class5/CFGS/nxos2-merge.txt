@@ -2,4 +2,4 @@ interface ethernet 2/3
   ip address 10.20.30.41/24
 
 interface ethernet 2/4
-  ip address 10.20.30.51/24
+  ip address 10.20.31.51/24
